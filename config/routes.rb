@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  
   root to: 'artists#searchartist'
   get '/history', to:'artists#history' ,as: 'history'
   # You can have the root of your site routed with "root"

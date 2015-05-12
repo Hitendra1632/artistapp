@@ -2,7 +2,9 @@
 <tr>
 <th>Name</th>
 </tr>	
-<%@user_history.history.each do |artist_name| %>
-	<tr><td><%= artist_name%></td></tr>
+<%if @user_history.present? %>
+	<%@user_history.history.each do |artist_name| %>
+		<tr><td><%= artist_name%></td></tr>
+	<%end%>
 <%end%>
 </table>

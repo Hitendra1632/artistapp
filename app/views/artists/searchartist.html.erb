@@ -1,0 +1,38 @@
+ 
+	<%= link_to "History" , history_path %>
+        <div class="main-search">
+             <%= form_tag root_path ,:method => :get do %>
+          <fieldset>
+          <%= text_field_tag :search ,params[:search],:placeholder => "Enter the artist name " %>
+         </fieldset>
+            <% end %>
+
+<%if @message.present? %>
+	<%= @message %>
+<%end%>
+<% if @artist.present? %> 
+	<h4>
+		<%= link_to @artist.first["name"],@artist.first["url"]%>
+
+	</h4>
+		<%= image_tag @artist.first["image"].last["#text"]%></br>
+
+	</br>
+	</br>
+	</br>
+	</br>
+	<h4> Similar/Recommended Artists</h4>
+	<% if !@similar_artists__message.present? %>
+		<table>
+				<tr>
+					<%@similar_artists_list.each do |similar_artist| %>
+						<th><%=link_to similar_artist["name"],similar_artist["url"]%></br>
+							<%=image_tag similar_artist["image"][2]["#text"]%>
+						</th>
+				
+			<%end%>
+				</tr>
+		</table>
+	 
+	<%end%>
+<%end%>
